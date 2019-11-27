@@ -1,7 +1,7 @@
 param = local_settings();
 
-[data, Fs] = audioread(param.testfile);
-%Lendo o audio, retorna data = dados Fs = Frequência de leitura
+[data, Fs] = audioread(param.audio2);
+%Lendo o audio, retorna data = dados Fs = Frequencia de leitura
 
 echo_ridiculo = [1, zeros(1,0.2*Fs), 0.8, zeros(1,0.2*Fs),0.6,zeros(1,0.2*Fs), 0.4 ,zeros(1,0.2*Fs), 0.2];
 echo_razoavel = [1, zeros(1,0.4*Fs), 0.5, zeros(1,0.4*Fs), 0.2];
@@ -12,24 +12,24 @@ out_razoavel = conv(data(:,1),echo_razoavel);
 out_reverb = conv(data(:,1),echo_reverb);
 
 figure(1)
-title('Dado lido')
 plot(data)
+title('Dado lido')
 
 figure(2)
-title('Convolução Razoável')
 plot(out_razoavel)
+title('Convolucao razoavel')
 
 figure(3)
-title('Echo ridiculo')
 plot(echo_ridiculo)
+title('Echo ridiculo')
 
 figure(4)
-title('Echo razoável')
 plot(echo_razoavel)
+title('Echo razoavel')
 
 figure(5)
-title('Echo delay')
 plot(echo_reverb)
+title('Echo delay')
 
 player_ridiculo = audioplayer(out_ridiculo, Fs);
 player_razoavel = audioplayer(out_razoavel,Fs);

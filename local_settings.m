@@ -3,7 +3,9 @@ function param = local_settings()
 % fill in these folders and save this file as local_settings.m
 param.songdir = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir';
 param.hashdir = 'E:/Users/jccb/Desktop/CaptainMarvel/hashdir';
-param.testfile = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio2.wma'
+param.audio0 = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio0.wma'
+param.audio1 = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio1.wma'
+param.audio2 = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio2.wma'
 
 param.fs = 8000;
 
