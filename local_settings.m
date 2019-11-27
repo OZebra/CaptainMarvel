@@ -1,9 +1,9 @@
 function param = local_settings()
 
 % fill in these folders and save this file as local_settings.m
-param.songdir = 'E:/Users/jccb/Desktop/Projeto_2019.2/songdir';
-param.hashdir = 'E:/Users/jccb/Desktop/Projeto_2019.2/hashdir';
-param.testfile = 'E:/Users/jccb/Desktop/Projeto_2019.2/songdir/audio2.wma'
+param.songdir = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir';
+param.hashdir = 'E:/Users/jccb/Desktop/CaptainMarvel/hashdir';
+param.testfile = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio2.wma'
 
 param.fs = 8000;
 
