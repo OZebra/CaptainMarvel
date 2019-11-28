@@ -18,7 +18,7 @@ snum_win = floor((samplen-olen)/(wlen-olen));
 
 sspecpeaks = zeros(snum_win,1);
 % h = waitbar(0,'Calculating sample sound peaks...');
-for w_ind = 1:snum_win,
+for w_ind = 1:snum_win
 % 	waitbar(w_ind/snum_win,h);
 	wstart = (w_ind-1)*(wlen-olen)+1;
 	wend = wstart + wlen - 1;
@@ -33,11 +33,11 @@ end
 histo = zeros(num_win,1);
 % check matches in hash table
 % h = waitbar(0,'Matching hash table...');
-for sw_ind = 1:snum_win,
+for sw_ind = 1:snum_win
 % 	waitbar(sw_ind/snum_win,h);
 	thisfreq = sspecpeaks(sw_ind);
 	
-	for delta_ind = t_mindelta:min(t_maxdelta,snum_win-sw_ind),
+	for delta_ind = t_mindelta:min(t_maxdelta,snum_win-sw_ind)
 		targetfreq = sspecpeaks(sw_ind + delta_ind);
 		freqdiff = targetfreq - thisfreq;
 		
@@ -57,3 +57,4 @@ end
 % close(h)
 
 score = max(histo);
+disp(score);

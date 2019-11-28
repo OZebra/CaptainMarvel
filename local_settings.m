@@ -3,15 +3,18 @@ function param = local_settings()
 % fill in these folders and save this file as local_settings.m
 param.songdir = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir';
 param.hashdir = 'E:/Users/jccb/Desktop/CaptainMarvel/hashdir';
-param.audio0 = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio0.wma'
-param.audio1 = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio1.wma'
-param.audio2 = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio2.wma'
+param.audio0 = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio0.wma';
+param.audio1 = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio1.wma';
+param.audio2 = 'E:/Users/jccb/Desktop/CaptainMarvel/songdir/audio2.wma';
+
+param.hash1 = 'E:/Users/jccb/Desktop/CaptainMarvel/hashdir/hashtable Carnavalia_wma.mat';
+param.hash2 = 'E:/Users/jccb/Desktop/CaptainMarvel/hashdir/hashtable Livin on prayer_wma.mat';
 
 param.fs = 8000;
 
 % window length: 20 ms, but in samples
 param.wlen = param.fs*0.02;
-% overlap:
+% overlap:h
 param.olen = param.wlen/2;
 
 % define target window
