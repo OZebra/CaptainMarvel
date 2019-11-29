@@ -19,5 +19,8 @@
     
 ---
 
+##Rodando...
+    Pra rodar o o projeto é só ir no arquivo ´matchIt.m´ e dar Run pelo live do matlab. Ele vai fazer todas as etapas acima.
+
 
 
