@@ -1,4 +1,4 @@
-function score = trymatch(sample,hashtable,num_win)
+function score = trymatch(sample,hashtable)
 % calculate the hastable of one audio fragment to a given hashtable and
 % calculate its score
 %
@@ -15,10 +15,11 @@ t_freqdiff = param.t_freqdiff;
 samplen = length(sample);
 
 snum_win = floor((samplen-olen)/(wlen-olen));
+num_win = snum_win;
 
 sspecpeaks = zeros(snum_win,1);
 % h = waitbar(0,'Calculating sample sound peaks...');
-for w_ind = 1:snum_win
+for w_ind = 1:snum_win,
 % 	waitbar(w_ind/snum_win,h);
 	wstart = (w_ind-1)*(wlen-olen)+1;
 	wend = wstart + wlen - 1;
@@ -33,11 +34,11 @@ end
 histo = zeros(num_win,1);
 % check matches in hash table
 % h = waitbar(0,'Matching hash table...');
-for sw_ind = 1:snum_win
+for sw_ind = 1:snum_win,
 % 	waitbar(sw_ind/snum_win,h);
 	thisfreq = sspecpeaks(sw_ind);
 	
-	for delta_ind = t_mindelta:min(t_maxdelta,snum_win-sw_ind)
+	for delta_ind = t_mindelta:min(t_maxdelta,snum_win-sw_ind),
 		targetfreq = sspecpeaks(sw_ind + delta_ind);
 		freqdiff = targetfreq - thisfreq;
 		
@@ -47,7 +48,7 @@ for sw_ind = 1:snum_win
 			db_times = hashtable{thisfreq,freqdiff_ind,delta_ind};
 			for db_ind = 1:length(db_times)
 				delta = db_times(db_ind) - sw_ind; 
-				if (delta>0)
+				if (delta>0 && delta <= length(histo))
 					histo(delta) = histo(delta)+1;
 				end
 			end

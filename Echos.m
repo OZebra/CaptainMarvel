@@ -1,6 +1,6 @@
-param = local_settings();
+function Echos(audio_path)
 
-[data, Fs] = audioread(param.audio2);
+[data, Fs] = audioread(audio_path);
 %Lendo o audio, retorna data = dados Fs = Frequencia de leitura
 
 echo_ridiculo = [1, zeros(1,0.2*Fs), 0.8, zeros(1,0.2*Fs),0.6,zeros(1,0.2*Fs), 0.4 ,zeros(1,0.2*Fs), 0.2];
@@ -13,25 +13,24 @@ out_ridiculo = conv(data(:,1),echo_ridiculo);
 out_razoavel = conv(data(:,1),echo_razoavel);
 out_reverb = conv(data(:,1),echo_reverb);
 %Resultados das convolucoes
-
-
 figure(1)
+subplot(2,3,1)
 plot(data)
 title('Dado lido')
 
-figure(2)
+subplot(2,3,2)
 plot(out_razoavel)
 title('Convolucao razoavel')
 
-figure(3)
+subplot(2,3,3)
 plot(echo_ridiculo)
 title('Echo ridiculo')
 
-figure(4)
+subplot(2,3,4)
 plot(echo_razoavel)
 title('Echo razoavel')
 
-figure(5)
+subplot(2,3,5)
 plot(echo_reverb)
 title('Echo delay')
 
