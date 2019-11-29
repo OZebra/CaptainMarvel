@@ -7,8 +7,10 @@ param = local_settings();
 [data, Fs] = audioread(param.audio2);
 data_size = length(data);
 t = 0:1/Fs:data_size/Fs-1/Fs;
-
 subplot(2,3,1);plot(t,data);title('Data x t');xlabel('Tempo');ylabel('Amplitude');
+
+noise = 1e-1*sin(2*pi*523.25*t);
+data_noise = data + noise';
 
 furData = fft(data)/data_size;
 furFreq = (0:length(furData)-1)*Fs/length(furData);
@@ -18,11 +20,18 @@ fShift = (-data_size/2:data_size/2-1)*(Fs/data_size);
 furDataShift = fftshift(furData);
 subplot(2,3,3);plot(fShift, abs(furDataShift));title('Fourrier Data Shifted x w');xlabel('Frequencia');ylabel('Amplitude');
 
-n = 0:1/Fs:(length(data)-1)/Fs; %Cria vetor com tamanho de fs
-noise = sin(2*pi*1000*n); %Cria fun��o seno para usar de ruido
+begFreq = 522.25 / (Fs/2);
+endFreq = 524.25 / (Fs/2);%Normalizando frequencias para a funcao butter;
 
-% player_normal = audioplayer(data, Fs);
-% player_ruido = audioplayer(data_ruido, Fs);
+[b,a] = butter(10, [begFreq, endFreq], 'stop');
+
+filtered_data = filter(b,a,data);
+
+
+
+player_normal = audioplayer(data, Fs);
+player_noise = audioplayer(data_noise, Fs);
+player_filtrado = audioplayer(filtered_data, Fs);
 
 % subplot(2,3,1)
 % plot(freq(1:fc), abs(furData));
